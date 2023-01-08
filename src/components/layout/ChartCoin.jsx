@@ -32,7 +32,7 @@ export const options = {
     },
 };
 
-const ChartCoin = ({ coinDetail }) => {
+const ChartCoin = () => {
     const { coinId } = useParams();
     const [dataHistorical, setDataHistorical] = useState([]);
     const [days, setDays] = useState(1);
@@ -54,24 +54,25 @@ const ChartCoin = ({ coinDetail }) => {
     // console.log("dataHistorical ~ ", dataHistorical);
     return (
         <Fragment>
-            <div className="mb-5 flex gap-x-2">
-                {chartDays.map((day) => (
-                    <Button
-                        key={day.value}
-                        onClick={() => {
-                            setDays(day.value);
-                        }}
-                        selected={day.value === days}
-                        className="border border-blue-600 w-[50px] rounded-md transition-all hover:bg-blue-300"
-                    >
-                        {day.label}
-                    </Button>
-                ))}
+            <div className="mb-5 flex items-center justify-between">
+                <div className="flex gap-x-1">
+                    {chartDays.map((day) => (
+                        <Button
+                            key={day.value}
+                            onClick={() => {
+                                setDays(day.value);
+                            }}
+                            selected={day.value === days}
+                            className="text-sm border border-blue-600 w-[50px] h-[30px] rounded-md transition-all hover:bg-blue-300"
+                        >
+                            {day.label}
+                        </Button>
+                    ))}
+                </div>
             </div>
 
-            {!dataHistorical ? (
-                <div class="fade-loading"></div>
-            ) : (
+            {!dataHistorical && <div className="fade-loading"></div>}
+            {dataHistorical && (
                 <Line
                     options={options}
                     data={{

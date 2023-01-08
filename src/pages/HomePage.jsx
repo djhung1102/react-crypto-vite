@@ -46,7 +46,7 @@ const HomePage = () => {
                     Cryptocurrency Prices by Market Cap
                 </h2>
                 <div className="flex items-center justify-between mb-4">
-                    <span className="capitalize px-3 py-2 border border-gray-400 rounded-3xl text-sm font-medium">
+                    <span className="capitalize px-3 py-2 border border-gray-400 rounded-3xl text-sm font-medium select-none">
                         All categories
                     </span>
                 </div>

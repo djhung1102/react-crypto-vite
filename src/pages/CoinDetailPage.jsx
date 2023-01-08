@@ -3,8 +3,12 @@ import React, { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import ChartCoin from "../components/layout/ChartCoin";
 import CoinStatistics from "../components/layout/CoinStatistics";
+import CoinTitle from "../components/layout/CoinTitle";
 
 const CoinDetailPage = () => {
+    useEffect(() => {
+        document.title = "Coin Detail Page";
+    }, []);
     const { coinId } = useParams();
     const [coinDetail, setCoinDetail] = useState([]);
     useEffect(() => {
@@ -29,34 +33,30 @@ const CoinDetailPage = () => {
             {!coinDetail && <div className="circle-loading"></div>}
             {coinDetail && (
                 <div className="coin-detail">
-                    <div className="flex flex-col items-center justify-center">
-                        <img
-                            src={`${coinDetail.image?.large}`}
-                            alt=""
-                            className="h-[150px]"
-                        />
-                        <div className="flex flex-row items-center mt-4 font-extrabold text-3xl gap-x-2">
-                            <span className="">{coinDetail.name}</span>
-                            <span className="uppercase">
-                                ({coinDetail.symbol})
-                            </span>
-                            <span className="text-white px-2 py-1 bg-slate-600 text-sm rounded-lg">
-                                Rank #{coinDetail.market_cap_rank}
-                            </span>
-                        </div>
-                        <span className="text-base font-medium text-center mt-2 pr-[200px] pl-[200px]">
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: coinDetail.description?.en.split(
-                                        ". ",
-                                        2
-                                    ),
-                                }}
-                            ></div>
-                        </span>
-                    </div>
+                    <CoinTitle coinDetail={coinDetail}></CoinTitle>
                     <div className="chart-coin mt-10 flex gap-x-9 p-6">
-                        <div className="w-[800px] h-[460px]">
+                        <div className="w-[800px] h-[460px] flex flex-col gap-y-2">
+                            <h2 className="text-2xl font-bold">
+                                {coinDetail.name} Price Chart
+                            </h2>
+                            <span className="text-sm text-[#724A4A]">
+                                Last updated{" "}
+                                {new Date(coinDetail.last_updated).getHours() >
+                                12
+                                    ? `${
+                                          new Date(
+                                              coinDetail.last_updated
+                                          ).getHours() - 12
+                                      }:${new Date(
+                                          coinDetail.last_updated
+                                      ).getMinutes()} PM`
+                                    : `${new Date(
+                                          coinDetail.last_updated
+                                      ).getHours()}:${new Date(
+                                          coinDetail.last_updated
+                                      ).getMinutes()} AM`}{" "}
+                                UTC . Currency in USD.
+                            </span>
                             <ChartCoin coinDetail={coinDetail}></ChartCoin>
                         </div>
                         <div className="flex-1 p-5 bg-[#F3F4F6] rounded-2xl">
