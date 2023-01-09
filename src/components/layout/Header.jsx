@@ -10,7 +10,10 @@ const Header = () => {
                     <NavLink to="/" className="flex items-center no-underline">
                         Cryptocurrencies
                     </NavLink>
-                    <NavLink to="/" className="flex items-center no-underline">
+                    <NavLink
+                        to="/exchanges"
+                        className="flex items-center no-underline"
+                    >
                         Exchanges
                     </NavLink>
                 </div>

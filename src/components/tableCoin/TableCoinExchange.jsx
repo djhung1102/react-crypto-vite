@@ -1,18 +1,18 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
-import TdCard from "./TdCard";
 import { useNavigate } from "react-router-dom";
-import { titleData } from "../../config/TitleTableData";
+import { v4 as uuidv4 } from "uuid";
+import { titleExchange } from "../../config/TitleExchange";
+import TdCard from "./TdCard";
 import TrCard from "./TrCard";
 
-const TableCoin = ({ coins }) => {
+const TableCoinExchange = ({ coinExchange }) => {
     const navigate = useNavigate();
     return (
         <div>
             <table className="table-user">
                 <thead>
                     <tr>
-                        {titleData.map((item) => (
+                        {titleExchange.map((item) => (
                             <th
                                 key={uuidv4()}
                                 className={
@@ -27,15 +27,17 @@ const TableCoin = ({ coins }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {!coins && <TrCard className="circle-loading"></TrCard>}
-                    {coins &&
-                        coins.length > 0 &&
-                        coins.map((coin, index) => (
+                    {!coinExchange && (
+                        <TrCard className="circle-loading"></TrCard>
+                    )}
+                    {coinExchange &&
+                        coinExchange.length > 0 &&
+                        coinExchange.map((coin) => (
                             <TrCard
                                 key={coin.id}
                                 className="transition-all hover:bg-slate-100"
                             >
-                                <TdCard>{index + 1}</TdCard>
+                                <TdCard>{coin.trust_score_rank}</TdCard>
                                 <TdCard>
                                     <div
                                         className="flex gap-x-5 cursor-pointer"
@@ -51,38 +53,22 @@ const TableCoin = ({ coins }) => {
                                         <span className="flex items-center font-semibold">
                                             {coin.name}
                                         </span>
-                                        <span className="uppercase text-gray-500">
-                                            {coin.symbol}
-                                        </span>
                                     </div>
                                 </TdCard>
+                                <TdCard type="right">{coin.trust_score}</TdCard>
                                 <TdCard type="right">
-                                    ${coin.current_price}
-                                </TdCard>
-                                <TdCard
-                                    type="right"
-                                    className={
-                                        coin.price_change_percentage_24h > 0
-                                            ? "text-green-500"
-                                            : "text-red-500"
-                                    }
-                                >
-                                    {coin.price_change_percentage_24h}%
+                                    {coin.year_established}
                                 </TdCard>
                                 <TdCard type="right">
-                                    ${coin.total_volume}
+                                    $
+                                    {coin.trade_volume_24h_btc_normalized.toFixed(
+                                        2
+                                    )}
                                 </TdCard>
-                                <TdCard type="right">${coin.market_cap}</TdCard>
-                                <TdCard
-                                    type="right"
-                                    className={
-                                        coin.price_change_percentage_24h > 0
-                                            ? "text-green-500"
-                                            : "text-red-500"
-                                    }
-                                >
-                                    {coin.market_cap_change_percentage_24h}%
+                                <TdCard type="right">
+                                    ${coin.trade_volume_24h_btc.toFixed(2)}
                                 </TdCard>
+                                <TdCard type="right">{coin.country}</TdCard>
                             </TrCard>
                         ))}
                 </tbody>
@@ -91,4 +77,4 @@ const TableCoin = ({ coins }) => {
     );
 };
 
-export default TableCoin;
+export default TableCoinExchange;

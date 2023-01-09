@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import ItemStatistics from "./ItemStatistics";
+import ItemStatistics from "../layout/ItemStatistics";
 
 const CoinStatistics = ({ coinDetail }) => {
     const { market_data } = coinDetail;

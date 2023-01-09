@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
-import ChartCoin from "../components/layout/ChartCoin";
-import CoinStatistics from "../components/layout/CoinStatistics";
+import ChartCoin from "../components/chart/ChartCoin";
 import CoinTitle from "../components/layout/CoinTitle";
+import CoinStatistics from "../components/statistics/CoinStatistics";
 
 const CoinDetailPage = () => {
     useEffect(() => {
         document.title = "Coin Detail Page";
     }, []);
     const { coinId } = useParams();
-    const [coinDetail, setCoinDetail] = useState([]);
+    const [coinDetail, setCoinDetail] = useState(null);
     useEffect(() => {
         const getDataCoin = async () => {
             try {
@@ -26,7 +26,7 @@ const CoinDetailPage = () => {
             setCoinDetail(res);
         });
     }, [coinId]);
-    console.log("coinDetail ~ ", coinDetail);
+    // console.log("coinDetail ~ ", coinDetail);
 
     return (
         <Fragment>
@@ -57,7 +57,7 @@ const CoinDetailPage = () => {
                                       ).getMinutes()} AM`}{" "}
                                 UTC . Currency in USD.
                             </span>
-                            <ChartCoin coinDetail={coinDetail}></ChartCoin>
+                            <ChartCoin coinId={coinId}></ChartCoin>
                         </div>
                         <div className="flex-1 p-5 bg-[#F3F4F6] rounded-2xl">
                             <h2 className="capitalize font-bold text-2xl mb-5">

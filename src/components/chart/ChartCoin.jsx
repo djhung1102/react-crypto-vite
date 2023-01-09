@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState, Fragment } from "react";
-import { useParams } from "react-router-dom";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -12,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { chartDays } from "../../config/DaysData";
-import Button from "./Button";
+import Button from "../button/Button";
 
 ChartJS.register(
     CategoryScale,
@@ -32,9 +31,8 @@ export const options = {
     },
 };
 
-const ChartCoin = () => {
-    const { coinId } = useParams();
-    const [dataHistorical, setDataHistorical] = useState([]);
+const ChartCoin = ({ coinId }) => {
+    const [dataHistorical, setDataHistorical] = useState(null);
     const [days, setDays] = useState(1);
     useEffect(() => {
         const getDataCoin = async () => {
