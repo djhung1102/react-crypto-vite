@@ -46,20 +46,14 @@ const Trending = () => {
                                             </span>
                                         </div>
                                     </div>
-                                    <span className="font-bold text-lg">
-                                        {coin.item.score}
-                                    </span>
+                                    <span className="font-bold text-lg">{coin.item.score}</span>
                                 </div>
                                 <div className="mt-5 flex items-center justify-between">
-                                    <span className="text-base font-medium">
-                                        Market Cap Rank:
-                                    </span>
+                                    <span className="text-base font-medium">Market Cap Rank:</span>
                                     <span>{coin.item.market_cap_rank}</span>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-base font-medium">
-                                        Price:
-                                    </span>
+                                    <span className="text-base font-medium">Price:</span>
                                     <span
                                         className={
                                             coin.price_change_percentage_24h > 0

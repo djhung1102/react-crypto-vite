@@ -10,20 +10,17 @@ const Header = () => {
                     <NavLink to="/" className="flex items-center no-underline">
                         Cryptocurrencies
                     </NavLink>
-                    <NavLink
-                        to="/exchanges"
-                        className="flex items-center no-underline"
-                    >
+                    <NavLink to="/exchanges" className="flex items-center no-underline">
                         Exchanges
                     </NavLink>
                 </div>
                 <div className="font-semibold flex gap-x-5">
-                    <NavLink to="#">
+                    <NavLink to="/sign-in">
                         <button className="text-white px-5 py-2 bg-[#69A235] rounded-lg">
                             Login
                         </button>
                     </NavLink>
-                    <NavLink to="#">
+                    <NavLink to="/sign-up">
                         <button className="text-white px-5 py-2 bg-[#69A235] rounded-lg">
                             Sign up
                         </button>

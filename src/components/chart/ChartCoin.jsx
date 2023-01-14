@@ -1,26 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState, Fragment } from "react";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Tooltip,
-    Legend,
-} from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { chartDays } from "../../config/DaysData";
 import Button from "../button/Button";
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Tooltip,
-    Legend
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 export const options = {
     responsive: true,
@@ -78,20 +63,14 @@ const ChartCoin = ({ coinId }) => {
                             let date = new Date(coin[0]);
                             let time =
                                 date.getHours() > 12
-                                    ? `${
-                                          date.getHours() - 12
-                                      }:${date.getMinutes()} PM`
+                                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
                                     : `${date.getHours()}:${date.getMinutes()} AM`;
-                            return days === 1
-                                ? time
-                                : date.toLocaleDateString();
+                            return days === 1 ? time : date.toLocaleDateString();
                         }),
                         datasets: [
                             {
                                 label: `Price (Past ${days} Days)`,
-                                data: dataHistorical?.prices?.map(
-                                    (coin) => coin[1]
-                                ),
+                                data: dataHistorical?.prices?.map((coin) => coin[1]),
                                 borderColor: "#7CB5EC",
                             },
                         ],

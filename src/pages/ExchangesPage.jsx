@@ -12,7 +12,7 @@ const ExchangesPage = () => {
         const getDataAPI = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.coingecko.com/api/v3/exchanges?page=${nextPage}`
+                    `https://api.coingecko.com/api/v3/exchanges?per_page=50&page=${nextPage}`
                 );
                 return response.data;
             } catch (error) {
@@ -46,13 +46,11 @@ const ExchangesPage = () => {
                         title="Top Crypto Exchanges Ranked by Trust Score"
                         tag="All Countries"
                     >
-                        As of today, we track 565 crypto exchanges with a total
-                        24h trading volume of $44.5 Billion.
+                        As of today, we track 565 crypto exchanges with a total 24h trading volume
+                        of $44.5 Billion.
                     </Introduce>
                     <div>
-                        <TableCoinExchange
-                            coinExchange={coinExchange}
-                        ></TableCoinExchange>
+                        <TableCoinExchange coinExchange={coinExchange}></TableCoinExchange>
                     </div>
                     <div className="mt-10">
                         <ReactPaginate

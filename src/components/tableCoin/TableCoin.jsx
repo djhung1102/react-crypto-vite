@@ -15,11 +15,7 @@ const TableCoin = ({ coins }) => {
                         {titleData.map((item) => (
                             <th
                                 key={uuidv4()}
-                                className={
-                                    item.type === "left"
-                                        ? "text-left"
-                                        : "text-right"
-                                }
+                                className={item.type === "left" ? "text-left" : "text-right"}
                             >
                                 {item.title}
                             </th>
@@ -27,21 +23,14 @@ const TableCoin = ({ coins }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {!coins && <TrCard className="circle-loading"></TrCard>}
-                    {coins &&
-                        coins.length > 0 &&
+                    {coins.length > 0 &&
                         coins.map((coin, index) => (
-                            <TrCard
-                                key={coin.id}
-                                className="transition-all hover:bg-slate-100"
-                            >
+                            <TrCard key={coin.id} className="transition-all hover:bg-slate-100">
                                 <TdCard>{index + 1}</TdCard>
                                 <TdCard>
                                     <div
                                         className="flex gap-x-5 cursor-pointer"
-                                        onClick={() =>
-                                            navigate(`/coin/${coin.id}`)
-                                        }
+                                        onClick={() => navigate(`/coin/${coin.id}`)}
                                     >
                                         <img
                                             src={`${coin.image}`}
@@ -56,9 +45,7 @@ const TableCoin = ({ coins }) => {
                                         </span>
                                     </div>
                                 </TdCard>
-                                <TdCard type="right">
-                                    ${coin.current_price}
-                                </TdCard>
+                                <TdCard type="right">${coin.current_price}</TdCard>
                                 <TdCard
                                     type="right"
                                     className={
@@ -69,9 +56,7 @@ const TableCoin = ({ coins }) => {
                                 >
                                     {coin.price_change_percentage_24h}%
                                 </TdCard>
-                                <TdCard type="right">
-                                    ${coin.total_volume}
-                                </TdCard>
+                                <TdCard type="right">${coin.total_volume}</TdCard>
                                 <TdCard type="right">${coin.market_cap}</TdCard>
                                 <TdCard
                                     type="right"

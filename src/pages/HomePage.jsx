@@ -5,7 +5,6 @@ import ReactPaginate from "react-paginate";
 import Introduce from "../components/layout/Introduce";
 import Trending from "../components/layout/Trending";
 
-const itemsPerPage = 100;
 const HomePage = () => {
     useEffect(() => {
         document.title = "Cryptocurrency Prices";
@@ -17,7 +16,7 @@ const HomePage = () => {
         const getDataAPI = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${itemsPerPage}&page=${nextPage}&sparkline=false`
+                    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${nextPage}&sparkline=false`
                 );
                 return response.data;
             } catch (error) {
@@ -33,11 +32,11 @@ const HomePage = () => {
     const [itemOffset, setItemOffset] = useState(0);
     useEffect(() => {
         if (!coins) return;
-        setPageCount(Math.ceil(12811 / itemsPerPage));
+        setPageCount(Math.ceil(12811 / 50));
     }, [coins, itemOffset]);
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % 12811;
+        const newOffset = (event.selected * 50) % 12811;
         setItemOffset(newOffset);
         setNextPage(event.selected + 1);
     };
@@ -46,12 +45,8 @@ const HomePage = () => {
             {!coins && <div className="circle-loading"></div>}
             {coins && (
                 <section className="all-categories px-5">
-                    <Introduce
-                        title="Cryptocurrency Prices by Market Cap"
-                        tag="All categories"
-                    >
-                        The global cryptocurrency market cap today is $885
-                        Billion.
+                    <Introduce title="Cryptocurrency Prices by Market Cap" tag="All categories">
+                        The global cryptocurrency market cap today is $885 Billion.
                     </Introduce>
                     <div>
                         <TableCoin coins={coins}></TableCoin>

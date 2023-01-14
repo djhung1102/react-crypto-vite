@@ -15,11 +15,7 @@ const TableCoinExchange = ({ coinExchange }) => {
                         {titleExchange.map((item) => (
                             <th
                                 key={uuidv4()}
-                                className={
-                                    item.type === "left"
-                                        ? "text-left"
-                                        : "text-right"
-                                }
+                                className={item.type === "left" ? "text-left" : "text-right"}
                             >
                                 {item.title}
                             </th>
@@ -27,23 +23,14 @@ const TableCoinExchange = ({ coinExchange }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {!coinExchange && (
-                        <TrCard className="circle-loading"></TrCard>
-                    )}
-                    {coinExchange &&
-                        coinExchange.length > 0 &&
+                    {coinExchange.length > 0 &&
                         coinExchange.map((coin) => (
-                            <TrCard
-                                key={coin.id}
-                                className="transition-all hover:bg-slate-100"
-                            >
+                            <TrCard key={coin.id} className="transition-all hover:bg-slate-100">
                                 <TdCard>{coin.trust_score_rank}</TdCard>
                                 <TdCard>
                                     <div
                                         className="flex gap-x-5 cursor-pointer"
-                                        onClick={() =>
-                                            navigate(`/coin/${coin.id}`)
-                                        }
+                                        onClick={() => navigate(`/coin/${coin.id}`)}
                                     >
                                         <img
                                             src={`${coin.image}`}
@@ -56,14 +43,9 @@ const TableCoinExchange = ({ coinExchange }) => {
                                     </div>
                                 </TdCard>
                                 <TdCard type="right">{coin.trust_score}</TdCard>
+                                <TdCard type="right">{coin.year_established}</TdCard>
                                 <TdCard type="right">
-                                    {coin.year_established}
-                                </TdCard>
-                                <TdCard type="right">
-                                    $
-                                    {coin.trade_volume_24h_btc_normalized.toFixed(
-                                        2
-                                    )}
+                                    ${coin.trade_volume_24h_btc_normalized.toFixed(2)}
                                 </TdCard>
                                 <TdCard type="right">
                                     ${coin.trade_volume_24h_btc.toFixed(2)}
