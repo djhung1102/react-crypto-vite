@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
+import SearchModal from "./SearchModal";
 
 const Header = () => {
     return (
@@ -14,7 +15,7 @@ const Header = () => {
                         Exchanges
                     </NavLink>
                 </div>
-                <div className="font-semibold flex gap-x-5">
+                <div className="font-semibold flex items-center gap-x-5">
                     <NavLink to="/sign-in">
                         <button className="text-white px-5 py-2 bg-[#69A235] rounded-lg">
                             Login
@@ -25,6 +26,9 @@ const Header = () => {
                             Sign up
                         </button>
                     </NavLink>
+                    <div>
+                        <SearchModal></SearchModal>
+                    </div>
                 </div>
             </header>
         </Fragment>
