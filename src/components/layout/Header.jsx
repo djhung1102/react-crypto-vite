@@ -5,13 +5,19 @@ import SearchModal from "./SearchModal";
 const Header = () => {
     return (
         <Fragment>
-            <header className="flex items-center justify-between py-3 px-5">
+            <header className="flex items-center justify-between py-3 px-5 select-none">
                 <div className="flex gap-x-5 font-semibold">
-                    <img src="/logo1.png" alt="" />
-                    <NavLink to="/" className="flex items-center no-underline">
+                    <NavLink to="/">
+                        <img
+                            src="/logo-2.png"
+                            alt=""
+                            className="h-[35px] cursor-pointer flex items-center"
+                        />
+                    </NavLink>
+                    <NavLink to="/" className="flex items-end no-underline">
                         Cryptocurrencies
                     </NavLink>
-                    <NavLink to="/exchanges" className="flex items-center no-underline">
+                    <NavLink to="/exchanges" className="flex items-end no-underline">
                         Exchanges
                     </NavLink>
                 </div>

@@ -1,7 +1,9 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import React, { Fragment, useEffect, useState } from "react";
 
 const Trending = () => {
+    const navigate = useNavigate();
     const [trendingCoin, setTrendingCoin] = useState([]);
     useEffect(() => {
         const getDataAPI = async () => {
@@ -29,6 +31,7 @@ const Trending = () => {
                             <div
                                 key={coin.item.coin_id}
                                 className="rounded-lg p-3 bg-gray-200 hover:bg-gray-300 cursor-pointer"
+                                onClick={() => navigate(`/coin/${coin.item.id}`)}
                             >
                                 <div className="flex items-start justify-between">
                                     <div className="flex gap-x-2">

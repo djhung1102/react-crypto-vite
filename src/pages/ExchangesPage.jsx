@@ -1,11 +1,15 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import Footer from "../components/layout/Footer";
 import Introduce from "../components/layout/Introduce";
 import Trending from "../components/layout/Trending";
 import TableCoinExchange from "../components/tableCoin/TableCoinExchange";
 
 const ExchangesPage = () => {
+    useEffect(() => {
+        document.title = "Top Crypto Exchanges Ranked by Trust Score";
+    }, []);
     const [coinExchange, setCoinExchange] = useState(null);
     const [nextPage, setNextPage] = useState(1);
     useEffect(() => {
@@ -41,7 +45,7 @@ const ExchangesPage = () => {
         <Fragment>
             {!coinExchange && <div className="circle-loading"></div>}
             {coinExchange && (
-                <section className="px-5">
+                <section className="px-5 mt-5">
                     <Introduce
                         title="Top Crypto Exchanges Ranked by Trust Score"
                         tag="All Countries"
@@ -65,6 +69,7 @@ const ExchangesPage = () => {
                         />
                     </div>
                     <Trending></Trending>
+                    <Footer></Footer>
                 </section>
             )}
         </Fragment>

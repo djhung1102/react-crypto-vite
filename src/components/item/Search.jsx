@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import useDebounce from "../../hooks/useDebounce";
 import SearchIcon from "../../assets/icon/SearchIcon";
 import Offset from "../../assets/icon/Offset";
 import TitleSearch from "../layout/TitleSearch";
 
 const Search = () => {
+    const navigate = useNavigate();
     const [coin, setCoin] = useState([]);
     const [wordEnter, setWordEnter] = useState("");
     const wordEnterDebounce = useDebounce(wordEnter, 1000);
@@ -27,8 +29,8 @@ const Search = () => {
             setCoin(res);
         });
     }, [wordEnterDebounce]);
-    console.log(coin);
-    console.log(wordEnterDebounce);
+    // console.log(coin);
+    // console.log(wordEnterDebounce);
     // max-w-[400px] h-auto border border-gray-300 rounded-lg shadow-lg
     return (
         <div className="w-full h-auto border border-gray-300 rounded-lg shadow-lg">
@@ -50,6 +52,7 @@ const Search = () => {
                             <div
                                 key={item.id}
                                 className="p-3 flex items-center justify-between cursor-pointer transition-all hover:bg-gray-200"
+                                onClick={() => navigate(`/coin/${item.id}`)}
                             >
                                 <div className="flex items-center gap-x-2">
                                     <img src={`${item.thumb}`} alt="" className="h-[20px]" />

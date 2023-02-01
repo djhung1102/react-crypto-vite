@@ -2,20 +2,23 @@ import axios from "axios";
 import React, { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import ChartCoin from "../components/chart/ChartCoin";
+import ChartCoinEx from "../components/chart/ChartCoinEx";
 import CoinTitle from "../components/layout/CoinTitle";
+import CoinTitleEx from "../components/layout/CoinTitleEx";
 import CoinStatistics from "../components/statistics/CoinStatistics";
+import CoinStatisticsEx from "../components/statistics/CoinStatisticsEx";
 
-const CoinDetailPage = () => {
+const ExchangeDetailPage = () => {
     useEffect(() => {
-        document.title = "Coin Detail Page";
+        document.title = "Exchange Detail Page";
     }, []);
-    const { coinId } = useParams();
+    const { exId } = useParams();
     const [coinDetail, setCoinDetail] = useState(null);
     useEffect(() => {
         const getDataCoin = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.coingecko.com/api/v3/coins/${coinId}`
+                    `https://api.coingecko.com/api/v3/exchanges/${exId}`
                 );
                 return response.data;
             } catch (error) {
@@ -25,7 +28,7 @@ const CoinDetailPage = () => {
         getDataCoin().then((res) => {
             setCoinDetail(res);
         });
-    }, [coinId]);
+    }, [exId]);
     // console.log("coinDetail ~ ", coinDetail);
 
     return (
@@ -33,7 +36,7 @@ const CoinDetailPage = () => {
             {!coinDetail && <div className="circle-loading"></div>}
             {coinDetail && (
                 <div className="coin-detail">
-                    <CoinTitle coinDetail={coinDetail}></CoinTitle>
+                    <CoinTitleEx coinDetail={coinDetail}></CoinTitleEx>
                     <div className="chart-coin mt-10 flex gap-x-9 p-6">
                         <div className="w-[800px] h-[460px] flex flex-col gap-y-2">
                             <h2 className="text-2xl font-bold">{coinDetail.name} Price Chart</h2>
@@ -48,14 +51,14 @@ const CoinDetailPage = () => {
                                       ).getMinutes()} AM`}{" "}
                                 UTC . Currency in USD.
                             </span>
-                            <ChartCoin coinId={coinId}></ChartCoin>
+                            <ChartCoinEx exId={exId}></ChartCoinEx>
                         </div>
                         <div className="flex-1 p-5 bg-[#F3F4F6] rounded-2xl">
                             <h2 className="capitalize font-bold text-2xl mb-5">
-                                <span className="uppercase">{coinDetail.symbol}</span> Price
+                                <span className="uppercase"></span> Price
                                 Statistics
                             </h2>
-                            <CoinStatistics coinDetail={coinDetail}></CoinStatistics>
+                            <CoinStatisticsEx coinDetail={coinDetail}></CoinStatisticsEx>
                         </div>
                     </div>
                 </div>
@@ -64,4 +67,4 @@ const CoinDetailPage = () => {
     );
 };
 
-export default CoinDetailPage;
+export default ExchangeDetailPage;

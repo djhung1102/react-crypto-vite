@@ -4,10 +4,11 @@ import TableCoin from "../components/tableCoin/TableCoin";
 import ReactPaginate from "react-paginate";
 import Introduce from "../components/layout/Introduce";
 import Trending from "../components/layout/Trending";
+import Footer from "../components/layout/Footer";
 
 const HomePage = () => {
     useEffect(() => {
-        document.title = "Cryptocurrency Prices";
+        document.title = "Cryptocurrency Prices and Market Cap";
     }, []);
     const [nextPage, setNextPage] = useState(1);
     const [coins, setCoins] = useState(null);
@@ -44,7 +45,7 @@ const HomePage = () => {
         <Fragment>
             {!coins && <div className="circle-loading"></div>}
             {coins && (
-                <section className="all-categories px-5">
+                <section className="all-categories px-5 mt-5">
                     <Introduce title="Cryptocurrency Prices by Market Cap" tag="All categories">
                         The global cryptocurrency market cap today is $885 Billion.
                     </Introduce>
@@ -64,6 +65,7 @@ const HomePage = () => {
                         />
                     </div>
                     <Trending></Trending>
+                    <Footer></Footer>
                 </section>
             )}
         </Fragment>

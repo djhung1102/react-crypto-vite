@@ -30,7 +30,7 @@ const TableCoinExchange = ({ coinExchange }) => {
                                 <TdCard>
                                     <div
                                         className="flex gap-x-5 cursor-pointer"
-                                        onClick={() => navigate(`/coin/${coin.id}`)}
+                                        onClick={() => navigate(`/exchange/${coin.id}`)}
                                     >
                                         <img
                                             src={`${coin.image}`}
