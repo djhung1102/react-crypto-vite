@@ -1,6 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState, Fragment } from "react";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from "chart.js";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Legend,
+} from "chart.js";
 import { Line } from "react-chartjs-2";
 import { chartDays } from "../../config/DaysData";
 import Button from "../button/Button";
@@ -8,7 +16,8 @@ import Button from "../button/Button";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 export const options = {
-    responsive: true,
+    // responsive: true,
+    maintainAspectRatio: false,
     elements: {
         point: {
             radius: 1,

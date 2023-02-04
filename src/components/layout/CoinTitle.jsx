@@ -10,7 +10,7 @@ const CoinTitle = ({ coinDetail }) => {
                     <span className="font-extrabold">{coinDetail.name}</span>
                     <span className="uppercase text-xl text-[#6B7290]">{symbol}</span>
                 </div>
-                <span className="text-base font-medium text-center mt-2 pr-[200px] pl-[200px]">
+                <span className="text-base font-medium text-center mt-2 pr-[30px] pl-[30px] lg:pr-[200px] lg:pl-[200px]">
                     <div
                         dangerouslySetInnerHTML={{
                             __html: description?.en.split(". ", 2),

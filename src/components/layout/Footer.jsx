@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
     return (
         <footer className="mt-10 border-t border-t-gray-200">
-            <div className="grid grid-cols-7 gap-x-[2rem] pt-6">
+            <div className="flex flex-col lg:grid lg:grid-cols-7 lg:gap-x-[2rem] pt-6">
                 <div className="col-span-3">
                     <img src="/logo-2.png" alt="" className="h-[40px]" />
                     <p className="mt-5 text-gray-600 text-sm">

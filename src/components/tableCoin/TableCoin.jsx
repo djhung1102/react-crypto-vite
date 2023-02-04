@@ -8,7 +8,7 @@ import TrCard from "./TrCard";
 const TableCoin = ({ coins }) => {
     const navigate = useNavigate();
     return (
-        <div>
+        <div className="w-full overflow-x-auto">
             <table className="table-user">
                 <thead>
                     <tr>
@@ -40,7 +40,7 @@ const TableCoin = ({ coins }) => {
                                         <span className="flex items-center font-semibold">
                                             {coin.name}
                                         </span>
-                                        <span className="uppercase text-gray-500">
+                                        <span className="hidden lg:block uppercase text-gray-500">
                                             {coin.symbol}
                                         </span>
                                     </div>

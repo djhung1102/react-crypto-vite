@@ -35,10 +35,10 @@ const ExchangeDetailPage = () => {
         <Fragment>
             {!coinDetail && <div className="circle-loading"></div>}
             {coinDetail && (
-                <div className="coin-detail">
+                <div className="coin-detail overflow-x-hidden">
                     <CoinTitleEx coinDetail={coinDetail}></CoinTitleEx>
-                    <div className="chart-coin mt-10 flex gap-x-9 p-6">
-                        <div className="w-[800px] h-[460px] flex flex-col gap-y-2">
+                    <div className="chart-coin mt-10 flex flex-col gap-y-0 lg:flex-row lg:gap-x-9 p-1">
+                        <div className="w-[350px] lg:w-[800px] h-[300px] lg:h-[460px] flex flex-col gap-y-2">
                             <h2 className="text-2xl font-bold">{coinDetail.name} Price Chart</h2>
                             <span className="text-sm text-[#724A4A]">
                                 Last updated{" "}
@@ -51,12 +51,13 @@ const ExchangeDetailPage = () => {
                                       ).getMinutes()} AM`}{" "}
                                 UTC . Currency in USD.
                             </span>
-                            <ChartCoinEx exId={exId}></ChartCoinEx>
+                            <div className="w-[350px] lg:w-full h-[300px] lg:h-full">
+                                <ChartCoinEx exId={exId}></ChartCoinEx>
+                            </div>
                         </div>
-                        <div className="flex-1 p-5 bg-[#F3F4F6] rounded-2xl">
+                        <div className="lg:flex-1 p-3 lg:p-5 bg-[#F3F4F6] rounded-2xl mt-8">
                             <h2 className="capitalize font-bold text-2xl mb-5">
-                                <span className="uppercase"></span> Price
-                                Statistics
+                                <span className="uppercase"></span> Price Statistics
                             </h2>
                             <CoinStatisticsEx coinDetail={coinDetail}></CoinStatisticsEx>
                         </div>

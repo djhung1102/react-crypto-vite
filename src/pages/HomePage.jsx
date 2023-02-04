@@ -45,21 +45,21 @@ const HomePage = () => {
         <Fragment>
             {!coins && <div className="circle-loading"></div>}
             {coins && (
-                <section className="all-categories px-5 mt-5">
+                <section className="all-categories px-2 lg:px-5 mt-2 lg:mt-5 overflow-x-hidden">
                     <Introduce title="Cryptocurrency Prices by Market Cap" tag="All categories">
                         The global cryptocurrency market cap today is $885 Billion.
                     </Introduce>
-                    <div>
+                    <div className="w-full">
                         <TableCoin coins={coins}></TableCoin>
                     </div>
-                    <div className="mt-10">
+                    <div className="mt-10 mb-10">
                         <ReactPaginate
                             breakLabel="..."
-                            nextLabel="Next >"
+                            nextLabel=">"
                             onPageChange={handlePageClick}
                             pageRangeDisplayed={5}
                             pageCount={pageCount}
-                            previousLabel="< Previous"
+                            previousLabel="<"
                             renderOnZeroPageCount={null}
                             className="pagination"
                         />

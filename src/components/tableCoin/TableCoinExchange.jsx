@@ -8,7 +8,7 @@ import TrCard from "./TrCard";
 const TableCoinExchange = ({ coinExchange }) => {
     const navigate = useNavigate();
     return (
-        <div>
+        <div className="w-full overflow-x-auto">
             <table className="table-user">
                 <thead>
                     <tr>

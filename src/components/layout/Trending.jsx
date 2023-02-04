@@ -25,7 +25,7 @@ const Trending = () => {
         <Fragment>
             <div className="trending-coins mt-7">
                 <h2 className="font-bold text-2xl mb-4">Trending Coins</h2>
-                <div className="grid grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8">
                     {trendingCoin?.coins?.length > 0 &&
                         trendingCoin.coins.map((coin) => (
                             <div
