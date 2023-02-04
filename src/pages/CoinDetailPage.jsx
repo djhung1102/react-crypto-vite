@@ -32,9 +32,9 @@ const CoinDetailPage = () => {
         <Fragment>
             {!coinDetail && <div className="circle-loading"></div>}
             {coinDetail && (
-                <div className="coin-detail overflow-x-hidden">
+                <div className="coin-detail ">
                     <CoinTitle coinDetail={coinDetail}></CoinTitle>
-                    <div className="chart-coin mt-10 flex flex-col gap-y-0 lg:flex-row lg:gap-x-9 p-1">
+                    <div className="chart-coin mt-10 flex flex-col gap-y-0 lg:flex-row lg:gap-x-9 p-1 lg:p-6">
                         <div className="w-[350px] lg:w-[800px] h-[460px] flex flex-col gap-y-2">
                             <h2 className="text-2xl font-bold">{coinDetail.name} Price Chart</h2>
                             <span className="text-sm text-[#724A4A]">
